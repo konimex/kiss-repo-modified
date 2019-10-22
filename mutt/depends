@@ -1,0 +1,5 @@
+# The gdbm dependency below is needed for "header cache" option in mutt.
+cyrus-sasl
+gdbm
+ncurses
+zlib
