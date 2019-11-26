@@ -18,8 +18,6 @@ unset  MOZ_TELEMETRY_REPORTING
 export LDFLAGS="$LDFLAGS -Wl,-rpath=/usr/lib/firefox"
 export MOZ_NOSPAM=1
 
-cd firefox
-
 for patch in *.patch; do
     patch -p1 < "$patch"
 done
