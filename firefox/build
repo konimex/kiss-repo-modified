@@ -12,6 +12,18 @@
     make
     make install
 )
+unset AR
+unset AS
+export CC=clang
+export CXX=clang++
+export LD=ld.lld
+unset NM
+unset OBJCOPY
+unset RANLIB
+unset STRINGS
+unset STRIP
+sh
+
 export PATH=$PWD/autoconf/bin:$PATH
 
 unset  MOZ_TELEMETRY_REPORTING
@@ -23,8 +35,7 @@ for patch in *.patch; do
 done
 
 # Fix OOM errors.
-cores=$(nproc)
-printf '%s\n' "mk_add_options MOZ_MAKE_FLAGS=\"-j$cores -l$cores\"" >> mozconfig
+printf '%s\n' "mk_add_options MOZ_MAKE_FLAGS=\"-j6 -l6\"" >> mozconfig
 
 ./mach build
 DESTDIR="$1" ./mach install
